@@ -38,3 +38,7 @@ Route::get('/task', 'TaskController@index');
 Route::get('/task/create', 'TaskController@create');
 
 Route::post('/savetask', 'TaskController@store');
+
+Route::get('/task/{id}', 'TaskController@detail');
+
+Route::view('/tampilan', 'template.template');
