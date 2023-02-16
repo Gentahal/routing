@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template.template')
 
 @section('title')
 Halaman Task
@@ -7,13 +7,36 @@ Halaman Task
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     Task
                 </div>
 
                 <div class="card-body">
+                    <div class="table-responsive" p-2>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Task Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($task as $row)
+                                    <tr>
+                                        <td>{{ $row->nama }}</td>
+                                        <td>{{ $row->description }}</td>
+                                        <td>
+                                            <a href="#" class="btn bg-primary text-white">Detail</a>
+                                            <a href="#" class="btn bg-danger text-white">Hapus</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
