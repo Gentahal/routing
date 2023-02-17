@@ -29,8 +29,9 @@ Halaman Task
                                         <td>{{ $row->nama }}</td>
                                         <td>{{ $row->description }}</td>
                                         <td>
-                                            <a href="#" class="btn bg-primary text-white">Detail</a>
-                                            <a href="#" class="btn bg-danger text-white">Hapus</a>
+                                            <a href="{{ url('task/'.$row->id) }}" class="btn bg-primary text-white">Detail</a>
+                                            <a href="{{ url('taskedit/'.$row->id) }}" class="btn bg-warning text-white">Edit</a>
+                                            <a href="{{ url('delete/'.$row->id) }}" class="btn bg-danger text-white">Hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
