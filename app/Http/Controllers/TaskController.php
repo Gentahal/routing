@@ -37,6 +37,12 @@ class TaskController extends Controller
         return view('task.edit', compact('task'));
     }
 
+    public function update(Request $request, $id){
+        $task = Task::findOrFail($id);
+        $data = $request->all();
+        $task->update($data);
+        return redirect('/task');
+    }
 
     public function delete($id){
         $data = Task::findOrFail($id);

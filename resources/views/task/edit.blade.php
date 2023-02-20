@@ -7,11 +7,12 @@
             <div class="card">
                 <div class="card-header">Task</div>
                 <div class="card-body">
-                    <form action="/savetask" method="POST">
+                    <form action="{{ url('taskupdate', $task->id) }}" method="POST">
                     <div class="form-group">
                         @csrf
+                        {{ method_field('PUT') }}
                         <label for="">Nama Task</label>
-                        <input type="text" name="nama" value="{{ $task->nama }}" class="form-control">
+                        <input type="text" name="nama" value="{{ $task->nama }}" class="form-control input-outline">
                     </div>
                     <div class="form-group">
                         @csrf
@@ -19,7 +20,7 @@
                         <input type="text" name="description" value="{{ $task->description }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">Create</button>
+                        <button type="submit" class="btn btn-success">Edit</button>
                         <a href="/task" class="btn btn-danger">Kembali</a>
                     </div>
                     </form>
