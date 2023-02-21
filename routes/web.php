@@ -46,3 +46,4 @@ Route::get('taskedit/{id}', 'TaskController@edit');
 Route::put('taskupdate/{id}', 'TaskController@update');
 
 Route::view('/tampilan', 'template.template');
+Route::resource('profile', 'ProfileController');
