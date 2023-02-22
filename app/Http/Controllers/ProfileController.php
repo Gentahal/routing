@@ -16,7 +16,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $profile = Profile::all();
+        return view('profile.index',compact('profile'));
     }
 
     /**
@@ -45,22 +46,25 @@ class ProfileController extends Controller
             'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
+        //validasi untuk data yang apabila gagal, maka akan keluar error data tidak valid
         if($validator->fails())
         {
             return 'Data tidak valid';
         }
+
+        //kondisi input foto(file)
         if($request->hasFile('photo'))
         {
-            $destination_path = 'public/images/profile';
-            $image = $request->file('photo');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('photo')->storeAs($destination_path,$image_name);
-            $input['photo'] = $image_name; //untuk nama ke database
+            $destination_path = 'public/images/profile';//path penyimpanan
+            $image = $request->file('photo');//mengambil request foto
+            $image_name = $image->getClientOriginalName();//memberikan nama gambar yang akan disimpan di foto
+            $path = $request->file('photo')->storeAs($destination_path,$image_name);//mengirim foto ke folde store
+            $input['photo'] = $image_name; //untuk nama ke database/ mengirim ke database
         }
         
         Profile::create($input);
-        // return redirect('/profile');
-        dd('input');
+        return redirect('/profile');
+        
     }
 
     /**

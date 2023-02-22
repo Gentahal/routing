@@ -20,7 +20,15 @@ Halaman profile
                                 <th>NIK</th>
                             </thead>
                             <tbody>
-                                
+                                @foreach($profile as $row)
+                                <tr>
+                                    <td>
+                                        <img src="{{ asset('storage/images/profile/'.$row->photo) }}" alt="" class="img-thumbnail" width="100px">    
+                                    </td>
+                                    <td>{{ $row->nama }}</td>
+                                    <td>{{ $row->nik }}</td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
